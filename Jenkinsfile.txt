@@ -1,0 +1,18 @@
+node {
+    stage ('Inventory checkout'){
+        git 'https://github.com/mahmoud-feki/inventory.git'
+    }
+    stage ('Mvn Package'){
+        sh label: '', script: 'mvn clean package'
+    }
+    stage ('Build DockerImage'){
+        sh 'docker build -t mafeki/inventory --file ./src/main/docker/Dockerfile .'
+         
+    }
+    stage ('Push Docker Image'){
+         
+            sh 'docker login -u mafeki -p 0751074028'
+         
+        sh 'docker push mafeki/inventory'
+    }
+}
