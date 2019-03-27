@@ -13,6 +13,6 @@ node {
          
             sh 'docker login -u mafeki -p 0751074028'
          
-        sh 'docker push mafeki/inventory:latest'
+        sh 'docker push mafeki/inventory:v2'
     }
 }
