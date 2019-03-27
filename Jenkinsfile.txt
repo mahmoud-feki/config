@@ -6,13 +6,13 @@ node {
         sh label: '', script: 'mvn clean package'
     }
     stage ('Build DockerImage'){
-        sh 'docker build -t mafeki/inventory:v2 --file ./src/main/docker/Dockerfile .'
+        sh 'docker build -t mafeki/inventory:v3 --file ./src/main/docker/Dockerfile .'
          
     }
     stage ('Push Docker Image'){
          
             sh 'docker login -u mafeki -p 0751074028'
          
-        sh 'docker push mafeki/inventory:v2'
+        sh 'docker push mafeki/inventory:v3'
     }
 }
